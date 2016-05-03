@@ -9,9 +9,7 @@ const composerFxn = (props, onData) => {
 		Meteor.call("geocode", address, (err, response) => {
 			if (err) {return console.log(err);}
 
-			let city = response[0].city || "Somewhere";
-
-			let location = city + ", " + response[0].administrativeLevels.level1short;
+			let location = response[0].formattedAddress;
 
 			let coords = {lat: response[0].latitude, lng: response[0].longitude};
 
@@ -45,7 +43,7 @@ const composerFxn = (props, onData) => {
 const loadingFxn = () => (
 	<div className="container text-center">
 		<h3>Loading your local weather...</h3>
-		<p>Please enable geolocation</p>
+		<p>(please make sure geolocation is enabled)</p>
 	</div>
 );
 

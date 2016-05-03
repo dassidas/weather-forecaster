@@ -1,0 +1,45 @@
+.weatherWidget--location {
+	background-color: black;
+	padding: 10px;
+	border-radius: 10px 10px 0 0;
+	border: 5px solid indianred;
+	color: white;
+}
+
+.weatherWidget--category {
+	font-family: American Typewriter;
+}
+
+.weatherWidget--subheader {
+	font-family: American Typewriter;
+}
+
+.weatherWidget--temperature {
+	font-family: Roboto Bold;
+	font-size: 2em;
+}
+
+.weatherWidget--block {
+	background-color: indianred;
+	color: black;
+	padding: 10px 0;
+	margin-top: 10px;
+}
+
+.weatherWidget--block:last-of-type {
+	border-radius: 0 0 20px 20px;
+}
+
+.weatherWidget--button {
+	background-color: indianred;
+	border: none;
+	outline: none;
+}
+
+.weatherWidget--button:focus {
+	background-color: black;
+}
+
+.weatherWidget--button:hover {
+	background-color: black;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default MainLayout = ({content}) => (
-	<main>
+	<main className="container">
 		{content}
 	</main>
 );
