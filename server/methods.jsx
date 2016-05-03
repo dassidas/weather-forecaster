@@ -21,6 +21,6 @@ Meteor.methods({
 	geocode (address) {
 		let geo = new GeoCoder();
 
-		console.log(geo.geocode(address));
+		return geo.geocode(address);
 	}
 });

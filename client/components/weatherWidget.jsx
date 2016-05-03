@@ -8,6 +8,13 @@ export default WeatherWidget = React.createClass({
 	changeState(selected) {
 		return this.setState({selected});
 	},
+	changeLocation() {
+		let address = prompt("Please enter an address.");
+
+		if (address) {
+			this.props.changeLocation(address);
+		}
+	},
 	render() {
 		renderContent = () => {
 			switch (this.state.selected) {
@@ -28,7 +35,6 @@ export default WeatherWidget = React.createClass({
 				<h4 className="weatherWidget--location">{this.props.location}</h4>
 				<hr />
 				{renderContent()}
-				<button className="btn btn-primary">Change Location</button>
 			</div>
 		)
 	},
@@ -38,15 +44,16 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div>
+				<div className="row">
+					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button col-xs-4 btn btn-primary">Five Day</button>
+					<button onClick={this.changeLocation} className="weatherWidget--button col-xs-4 btn btn-primary">Change Location</button>
+					<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button col-xs-4 btn btn-primary">Seven Day</button>
+				</div>
 				{this.renderBlock("currently", "actual", weather.currently.temperature, "feels", weather.currently.apparentTemperature, weather.currently.icon)}
 				<hr />
 				{this.renderBlock("next hour", "actual", weather.hourly.data[1].temperature, "feels", weather.hourly.data[1].apparentTemperature, weather.hourly.data[1].icon)}
 				<hr />
 				{this.renderBlock("tomorrow", "min", weather.daily.data[1].temperatureMin, "max", weather.daily.data[1].temperatureMax, weather.daily.data[1].icon)}
-				<div className="row">
-					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button col-xs-6 btn btn-primary">Five Day</button>
-					<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button col-xs-6 btn btn-primary">Seven Day</button>
-				</div>
 			</div>
 		)
 	},
@@ -56,15 +63,16 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div>
+				<div className="row">
+					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button col-xs-4 btn btn-primary">Current</button>
+					<button onClick={this.changeLocation} className="weatherWidget--button col-xs-4 btn btn-primary">Change Location</button>
+					<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button col-xs-4 btn btn-primary">Seven Day</button>
+				</div>
 				{this.renderBlock(moment(weather.daily.data[0].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[0].temperatureMin, "max", weather.daily.data[0].temperatureMax, weather.daily.data[0].icon)}
 				{this.renderBlock(moment(weather.daily.data[1].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[1].temperatureMin, "max", weather.daily.data[1].temperatureMax, weather.daily.data[1].icon)}
 				{this.renderBlock(moment(weather.daily.data[2].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[2].temperatureMin, "max", weather.daily.data[2].temperatureMax, weather.daily.data[2].icon)}
 				{this.renderBlock(moment(weather.daily.data[3].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[3].temperatureMin, "max", weather.daily.data[3].temperatureMax, weather.daily.data[3].icon)}
 				{this.renderBlock(moment(weather.daily.data[4].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[4].temperatureMin, "max", weather.daily.data[4].temperatureMax, weather.daily.data[4].icon)}
-				<div className="row">
-					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button col-xs-6 btn btn-primary">Current</button>
-					<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button col-xs-6 btn btn-primary">Seven Day</button>
-				</div>
 			</div>
 		)
 	},
@@ -74,6 +82,11 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div>
+				<div className="row">
+					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button col-xs-4 btn btn-primary">Current</button>
+					<button onClick={this.changeLocation} className="weatherWidget--button col-xs-4 btn btn-primary">Change Location</button>
+					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button col-xs-4 btn btn-primary">Five Day</button>
+				</div>
 				{this.renderBlock(moment(weather.daily.data[0].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[0].temperatureMin, "max", weather.daily.data[0].temperatureMax, weather.daily.data[0].icon)}
 				{this.renderBlock(moment(weather.daily.data[1].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[1].temperatureMin, "max", weather.daily.data[1].temperatureMax, weather.daily.data[1].icon)}
 				{this.renderBlock(moment(weather.daily.data[2].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[2].temperatureMin, "max", weather.daily.data[2].temperatureMax, weather.daily.data[2].icon)}
@@ -81,11 +94,6 @@ export default WeatherWidget = React.createClass({
 				{this.renderBlock(moment(weather.daily.data[4].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[4].temperatureMin, "max", weather.daily.data[4].temperatureMax, weather.daily.data[4].icon)}
 				{this.renderBlock(moment(weather.daily.data[5].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[5].temperatureMin, "max", weather.daily.data[5].temperatureMax, weather.daily.data[5].icon)}
 				{this.renderBlock(moment(weather.daily.data[6].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[6].temperatureMin, "max", weather.daily.data[6].temperatureMax, weather.daily.data[6].icon)}
-				
-				<div className="row">
-					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button col-xs-6 btn btn-primary">Current</button>
-					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button col-xs-6 btn btn-primary">Five Day</button>
-				</div>
 			</div>
 		)
 	},
