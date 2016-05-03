@@ -25,7 +25,7 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div className="col-xs-12 text-center">
-				<h4 className="weatherWidget--location">{"Latitude " + this.props.weather.latitude.toPrecision(4) + ", Longitude " + this.props.weather.longitude.toPrecision(4)}</h4>
+				<h4 className="weatherWidget--location">{this.props.location}</h4>
 				<hr />
 				{renderContent()}
 				<button className="btn btn-primary">Change Location</button>
@@ -97,11 +97,11 @@ export default WeatherWidget = React.createClass({
 				<div className="row">
 					<div className="col-xs-4">
 						<div className="weatherWidget--subheader">{header1}</div>
-						<div className="weatherWidget--temperature">{temp1.toPrecision(2)}</div>
+						<div className="weatherWidget--temperature">{temp1.toPrecision(2)}&deg;</div>
 					</div>
 					<div className="col-xs-4">
 						<div className="weatherWidget--subheader">{header2}</div>
-						<div className="weatherWidget--temperature">{temp2.toPrecision(2)}</div>
+						<div className="weatherWidget--temperature">{temp2.toPrecision(2)}&deg;</div>
 					</div>
 					<div className="col-xs-4">
 						<div className="weatherWidget--subheader">icon {/*placeholder*/}</div>
