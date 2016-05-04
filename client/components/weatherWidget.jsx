@@ -41,7 +41,9 @@ export default WeatherWidget = React.createClass({
 						<h4 className="weatherWidget--location">{"Weather for " + this.props.location}</h4>
 					</div>
 				</div>
+
 				{renderContent()}
+
 				<div className="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					<div className="modal-dialog" role="document">
 						<div className="modal-content">
@@ -52,11 +54,11 @@ export default WeatherWidget = React.createClass({
 							<div className="modal-body">
 								<div className="form-group">
 									<label for="locationInput">Address</label>
-									<input type="email" className="form-control" id="locationInput" placeholder="type an address here" />
+									<input type="email" className="form-control text-center" id="locationInput" placeholder="type an address here" />
 								</div>
 							</div>
 								<div className="modal-footer">
-									<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" className="btn btn-primary weatherWidget--button" data-dismiss="modal">Close</button>
 									<button type="button" className="btn btn-primary weatherWidget--button" onClick={this.changeLocation} >Change Location</button>
 								</div>
 							</div>
@@ -70,7 +72,7 @@ export default WeatherWidget = React.createClass({
 		let weather = this.props.weather;
 
 		return (
-			<div>
+			<div className="weatherWidget--contentContainer">
 				<div className="btn-group">
 					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button btn btn-primary">Five Day</button>
 					<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
@@ -87,7 +89,7 @@ export default WeatherWidget = React.createClass({
 		let weather = this.props.weather;
 
 		return (
-			<div>
+			<div className="weatherWidget--contentContainer">
 				<div className="btn-group">
 					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button btn">Current</button>
 					<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
@@ -106,7 +108,7 @@ export default WeatherWidget = React.createClass({
 		let weather = this.props.weather;
 
 		return (
-			<div>
+			<div className="weatherWidget--contentContainer">
 				<div className="btn-group">
 					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button btn btn-primary">Current</button>
 					<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
@@ -124,6 +126,9 @@ export default WeatherWidget = React.createClass({
 	},
 	renderBlock(mainHeader, header1, temp1, header2, temp2, icon) {	
 		// renders a single block, to represent a single data point
+
+		let iconName = icon.split("-").join(" ");
+
 		return (
 			<div className="weatherWidget--block">
 				<h4 className="weatherWidget--category">{mainHeader}</h4>
@@ -133,6 +138,7 @@ export default WeatherWidget = React.createClass({
 						<div className="weatherWidget--temperature">{temp1.toPrecision(2)}&deg;</div>
 					</div>
 					<div className="col-xs-4">
+						<div className="weatherWidget--subheader">{iconName}</div>
 						<img className="weatherWidget--icon" src={"/icons/" + icon + ".svg"} />
 					</div>
 					<div className="col-xs-4">
