@@ -57,14 +57,14 @@ export default WeatherWidget = React.createClass({
 									<input type="email" className="form-control text-center" id="locationInput" placeholder="type an address here" />
 								</div>
 							</div>
-								<div className="modal-footer">
-									<button type="button" className="btn btn-primary weatherWidget--button" data-dismiss="modal">Close</button>
-									<button type="button" className="btn btn-primary weatherWidget--button" onClick={this.changeLocation} >Change Location</button>
-								</div>
+							<div className="modal-footer">
+								<button type="button" className="btn btn-primary weatherWidget--button" data-dismiss="modal">Close</button>
+								<button type="button" className="btn btn-primary weatherWidget--button" onClick={this.changeLocation} >Change Location</button>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 		)
 	},
 	renderCurrent() {
