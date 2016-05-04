@@ -135,14 +135,22 @@ export default WeatherWidget = React.createClass({
 				<div className="row">
 					<div className="col-xs-4">
 						<div className="weatherWidget--subheader">{header1}</div>
-						<div className="weatherWidget--temperature">{temp1.toPrecision(2)}&deg;</div>
 					</div>
 					<div className="col-xs-4">
 						<div className="weatherWidget--subheader">{iconName}</div>
-						<img className="weatherWidget--icon" src={"/icons/" + icon + ".svg"} />
 					</div>
 					<div className="col-xs-4">
 						<div className="weatherWidget--subheader">{header2}</div>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xs-4">
+						<div className="weatherWidget--temperature">{temp1.toPrecision(2)}&deg;</div>
+					</div>
+					<div className="col-xs-4">
+						<img className="weatherWidget--icon" src={"/icons/" + icon + ".svg"} />
+					</div>
+					<div className="col-xs-4">
 						<div className="weatherWidget--temperature">{temp2.toPrecision(2)}&deg;</div>
 					</div>
 				</div>
