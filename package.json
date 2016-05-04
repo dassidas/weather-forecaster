@@ -19,5 +19,7 @@
     "react-dom": "15.0.2",
     "react-komposer": "1.8.0",
     "react-mounter": "1.2.0"
-  }
+  },
+  "author": "Alex Hannan",
+  "license": "ISC"
 }
