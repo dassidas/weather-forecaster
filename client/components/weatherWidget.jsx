@@ -35,7 +35,7 @@ export default WeatherWidget = React.createClass({
 		}
 
 		return (
-			<div className="text-center">
+			<div className="text-center col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 				<div className="row">
 					<div className="col-xs-12">
 						<h4 className="weatherWidget--location">{"Weather for " + this.props.location}</h4>
@@ -57,7 +57,7 @@ export default WeatherWidget = React.createClass({
 							</div>
 								<div className="modal-footer">
 									<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-									<button type="button" className="btn btn-primary" onClick={this.changeLocation} >Change Location</button>
+									<button type="button" className="btn btn-primary weatherWidget--button" onClick={this.changeLocation} >Change Location</button>
 								</div>
 							</div>
 						</div>
@@ -71,19 +71,13 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div>
-				<div className="row weatherWidget--buttonGroup">
-					<div className="col-xs-4">
-						<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button btn btn-primary">Five Day</button>
-					</div>
-					<div className="col-xs-4">
-						<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
-					</div>
-					<div className="col-xs-4">
-						<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button btn btn-primary">Seven Day</button>
-					</div>
+				<div className="btn-group">
+					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button btn btn-primary">Five Day</button>
+					<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
+					<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button btn btn-primary">Seven Day</button>
 				</div>
-				{this.renderBlock("currently", "actual", weather.currently.temperature, "feels", weather.currently.apparentTemperature, weather.currently.icon)}
-				{this.renderBlock("next hour", "actual", weather.hourly.data[1].temperature, "feels", weather.hourly.data[1].apparentTemperature, weather.hourly.data[1].icon)}
+				{this.renderBlock("currently", "actual", weather.currently.temperature, "feels like", weather.currently.apparentTemperature, weather.currently.icon)}
+				{this.renderBlock("next hour", "actual", weather.hourly.data[1].temperature, "feels like", weather.hourly.data[1].apparentTemperature, weather.hourly.data[1].icon)}
 				{this.renderBlock("tomorrow", "min", weather.daily.data[1].temperatureMin, "max", weather.daily.data[1].temperatureMax, weather.daily.data[1].icon)}
 			</div>
 		)
@@ -94,16 +88,10 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div>
-				<div className="row weatherWidget--buttonGroup">
-					<div className="col-xs-4">
-						<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button btn btn-primary">Current</button>
-					</div>
-					<div className="col-xs-4">
-						<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
-					</div>
-					<div className="col-xs-4">
-						<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button btn btn-primary">Seven Day</button>
-					</div>
+				<div className="btn-group">
+					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button btn">Current</button>
+					<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
+					<button onClick={this.changeState.bind(null, "sevenDay")} className="weatherWidget--button btn btn-primary">Seven Day</button>
 				</div>
 				{this.renderBlock(moment(weather.daily.data[0].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[0].temperatureMin, "max", weather.daily.data[0].temperatureMax, weather.daily.data[0].icon)}
 				{this.renderBlock(moment(weather.daily.data[1].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[1].temperatureMin, "max", weather.daily.data[1].temperatureMax, weather.daily.data[1].icon)}
@@ -119,16 +107,10 @@ export default WeatherWidget = React.createClass({
 
 		return (
 			<div>
-				<div className="row weatherWidget--buttonGroup">
-					<div className="col-xs-4">
-						<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button btn btn-primary">Current</button>
-					</div>
-					<div className="col-xs-4">
-						<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
-					</div>
-					<div className="col-xs-4">
-						<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button btn btn-primary">Five Day</button>
-					</div>
+				<div className="btn-group">
+					<button onClick={this.changeState.bind(null, "current")} className="weatherWidget--button btn btn-primary">Current</button>
+					<button type="button" className="weatherWidget--button btn btn-primary" data-toggle="modal" data-target="#locationModal">Change Location</button>
+					<button onClick={this.changeState.bind(null, "fiveDay")} className="weatherWidget--button btn btn-primary">Five Day</button>
 				</div>
 				{this.renderBlock(moment(weather.daily.data[0].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[0].temperatureMin, "max", weather.daily.data[0].temperatureMax, weather.daily.data[0].icon)}
 				{this.renderBlock(moment(weather.daily.data[1].time.toString(), "X").format("ddd MMM Do"), "min", weather.daily.data[1].temperatureMin, "max", weather.daily.data[1].temperatureMax, weather.daily.data[1].icon)}
@@ -151,12 +133,11 @@ export default WeatherWidget = React.createClass({
 						<div className="weatherWidget--temperature">{temp1.toPrecision(2)}&deg;</div>
 					</div>
 					<div className="col-xs-4">
-						<div className="weatherWidget--subheader">{header2}</div>
-						<div className="weatherWidget--temperature">{temp2.toPrecision(2)}&deg;</div>
+						<img className="weatherWidget--icon" src={"/icons/" + icon + ".svg"} />
 					</div>
 					<div className="col-xs-4">
-						<div className="weatherWidget--subheader">icon {/*placeholder*/}</div>
-						<div className="weatherWidget--icon">{icon}</div>
+						<div className="weatherWidget--subheader">{header2}</div>
+						<div className="weatherWidget--temperature">{temp2.toPrecision(2)}&deg;</div>
 					</div>
 				</div>
 			</div>

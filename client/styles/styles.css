@@ -1,9 +1,9 @@
 .weatherWidget--location {
-	background-color: black;
+	background-color: #222;
 	padding: 10px;
 	border-radius: 10px 10px 0 0;
-	border: 5px solid indianred;
-	color: white;
+	border: 5px solid #64BFE3;
+	color: #ddd;
 }
 
 .weatherWidget--category {
@@ -11,17 +11,22 @@
 }
 
 .weatherWidget--subheader {
-	font-family: American Typewriter;
+	font-family: Inconsolata;
 }
 
 .weatherWidget--temperature {
-	font-family: Roboto Bold;
+	font-family: Inconsolata;
 	font-size: 2em;
 }
 
+.weatherWidget--icon {
+	width: 64px;
+	height: 64px;
+	margin: -10px auto 0;
+}
+
 .weatherWidget--block {
-	background-color: indianred;
-	color: black;
+	color: #222;
 	padding: 10px 0;
 	margin-top: 10px;
 }
@@ -31,15 +36,27 @@
 }
 
 .weatherWidget--button {
-	background-color: indianred;
+	color: #222;
 	border: none;
 	outline: none;
+	margin: 0 2px;
 }
 
+
 .weatherWidget--button:focus {
-	background-color: black;
+	background: #222;
+	color: white;
 }
 
 .weatherWidget--button:hover {
-	background-color: black;
+	background: #222;
+	color: white;
+}
+
+.weatherWidget--button, .weatherWidget--block {
+	background: #64BFE3;
+    background: -webkit-linear-gradient(#64BFE3, #91ECFF);
+    background: -o-linear-gradient(#64BFE3, #91ECFF);
+    background: -moz-linear-gradient(#64BFE3, #91ECFF);
+    background: linear-gradient(#64BFE3, #91ECFF);
 }
